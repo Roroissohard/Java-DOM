@@ -1,9 +1,21 @@
 const bookList = document.querySelector('#book-list');
 
-console.log('the parent next sibling is', bookList.nextSibling);
-console.log('the parent next element sibling is', bookList.nextElementSibling);
+console.log('book list parent element:', bookList.parentElement);
+console.log('book list parent node:', bookList.parentNode);
 
-console.log('the parent previous sibling is', bookList.previousSibling);
-console.log('the parent previous element sibling', bookList.previousElementSibling);
+console.log('all node children:');
+Array.from(bookList.childNodes).forEach(function(node){
+  console.log(node);
+});
 
-bookList.previousElementSibling.querySelector('p').innerHTML +='<br />Too cool for everyone else!';
+console.log('all element children:');
+Array.from(bookList.children).forEach(function(node){
+  console.log(node);
+});
+
+const titles = bookList.querySelectorAll('.name');
+
+console.log('Book titles:');
+Array.from(titles).forEach(function(title){
+  console.log(title.textContent);
+});
