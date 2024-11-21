@@ -1,21 +1,21 @@
-const bookList = document.querySelector('#book-list');
+const listItems = document.querySelectorAll('#book-list ul li');
 
-console.log('book list parent element:', bookList.parentElement);
-console.log('book list parent node:', bookList.parentNode);
+Array.from(listItems).forEach(function(item){
+  item.addEventListener('click', (e) => {
 
-console.log('all node children:');
-Array.from(bookList.childNodes).forEach(function(node){
-  console.log(node);
+    const li = e.target.parentElement;
+    console.log('child element to remove:', li);
+    console.log('parent element to remove child from:', li.parentElement);
+    li.parentNode.removeChild(li);
+
+  });
 });
 
-console.log('all element children:');
-Array.from(bookList.children).forEach(function(node){
-  console.log(node);
-});
+// prevent default behaviour
 
-const titles = bookList.querySelectorAll('.name');
+const link = document.querySelector('#page-banner a');
 
-console.log('Book titles:');
-Array.from(titles).forEach(function(title){
-  console.log(title.textContent);
+link.addEventListener('click', function(e){
+  e.preventDefault();
+  console.log('Navigation to', e.target.textContent, 'was prevented');
 });
